@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	ApiToken string `env:"TELEGRAM_APITOKEN"`
+	ApiToken string `env:"TELEGRAM_API_TOKEN,required"`
 }
 
 type Status struct {
@@ -20,7 +20,7 @@ type Status struct {
 func main() {
 	cfg := Config{}
 	if err := env.Parse(&cfg); err != nil {
-		fmt.Printf("%+v\n", err)
+		logrus.Fatal(errorx.EnhanceStackTrace(err, "failed to parse config"))
 	}
 	status := &Status{}
 
