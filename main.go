@@ -45,7 +45,7 @@ func main() {
 			continue
 		}
 
-		responseText := prepareResponse(bot, m, status)
+		responseText := prepareResponse(m, status)
 
 		message := tgbotapi.NewMessage(m.Chat.ID, responseText)
 		message.ReplyToMessageID = m.MessageID
@@ -57,7 +57,7 @@ func main() {
 	}
 }
 
-func prepareResponse(bot *tgbotapi.BotAPI, message *tgbotapi.Message, status *Status) string {
+func prepareResponse(message *tgbotapi.Message, status *Status) string {
 	if message.IsCommand() {
 		switch message.Command() {
 		case "count":
