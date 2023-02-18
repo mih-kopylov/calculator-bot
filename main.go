@@ -7,7 +7,6 @@ import (
 	"github.com/joomcode/errorx"
 	"github.com/mnogu/go-calculator"
 	"github.com/sirupsen/logrus"
-	"os"
 )
 
 type Config struct {
@@ -25,7 +24,7 @@ func main() {
 	}
 	status := &Status{}
 
-	bot, err := tgbotapi.NewBotAPI(os.Getenv("TELEGRAM_APITOKEN"))
+	bot, err := tgbotapi.NewBotAPI(cfg.ApiToken)
 	if err != nil {
 		panic(err)
 	}
