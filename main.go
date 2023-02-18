@@ -61,7 +61,7 @@ func main() {
 func prepareResponse(bot *tgbotapi.BotAPI, message *tgbotapi.Message, status *Status) string {
 	if message.IsCommand() {
 		switch message.Command() {
-		case "status":
+		case "count":
 			return fmt.Sprintf("Вычислено примеров : %v", status.examplesCount)
 		default:
 			return `Доступные команды:
